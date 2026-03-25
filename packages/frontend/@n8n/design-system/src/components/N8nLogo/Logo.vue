@@ -1,9 +1,8 @@
 <script setup lang="ts">
-import { useFavicon } from '@vueuse/core';
-import { computed, onMounted, useCssModule, useTemplateRef } from 'vue';
+import { computed, useCssModule } from 'vue';
 
 import LogoIcon from './logo-icon.svg';
-import LogoText from './logo-text.svg';
+// import LogoText from './logo-text.svg';
 
 const props = defineProps<
 	(
@@ -19,7 +18,7 @@ const props = defineProps<
 	}
 >();
 
-const { size, releaseChannel } = props;
+const { size } = props;
 
 const showLogoText = computed(() => {
 	if (size === 'large') return true;
@@ -37,29 +36,12 @@ const containerClasses = computed(() => {
 		props.collapsed ? $style.sidebarCollapsed : $style.sidebarExpanded,
 	];
 });
-
-const svg = useTemplateRef<{ $el: Element }>('logo');
-onMounted(() => {
-	if (!releaseChannel || releaseChannel === 'stable' || !('createObjectURL' in URL)) {
-		return;
-	}
-
-	const logoEl = svg.value!.$el;
-
-	// Change the logo fill color inline, so that favicon can also use it
-	const logoColor = releaseChannel === 'dev' ? '#838383' : '#E9984B';
-	logoEl.querySelector('path')?.setAttribute('fill', logoColor);
-
-	// Reuse the SVG as favicon
-	const blob = new Blob([logoEl.outerHTML], { type: 'image/svg+xml' });
-	useFavicon(URL.createObjectURL(blob));
-});
 </script>
 
 <template>
 	<div :class="containerClasses" data-test-id="n8n-logo">
 		<LogoIcon ref="logo" :class="$style.logo" />
-		<LogoText v-if="showLogoText" :class="$style.logoText" />
+		<!-- <LogoText v-if="showLogoText" :class="$style.logoText" /> -->
 		<slot />
 	</div>
 </template>
@@ -101,5 +83,11 @@ onMounted(() => {
 	width: 40px;
 	height: 30px;
 	padding: 0 var(--spacing--4xs);
+}
+.logo {
+	width: 100%;
+	height: auto;
+	display: block;
+	max-width: 100px;
 }
 </style>
