@@ -59,9 +59,9 @@ export class NodeMailer {
 				html: mailData.body,
 				attachments: [
 					{
-						cid: 'n8n-logo',
-						filename: 'n8n-logo.png',
-						path: path.resolve(__dirname, 'templates/n8n-logo.png'),
+						cid: 'forth-logo',
+						filename: 'forth-logo.png',
+						path: path.resolve(__dirname, 'templates/forth-logo.png'),
 						contentDisposition: 'inline',
 					},
 				],

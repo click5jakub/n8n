@@ -20,10 +20,10 @@ const props = defineProps<
 
 const { size } = props;
 
-const showLogoText = computed(() => {
-	if (size === 'large') return true;
-	return !props.collapsed;
-});
+// const showLogoText = computed(() => {
+// 	if (size === 'large') return true;
+// 	return !props.collapsed;
+// });
 
 const $style = useCssModule();
 const containerClasses = computed(() => {

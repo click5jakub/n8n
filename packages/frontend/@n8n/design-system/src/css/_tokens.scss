@@ -32,7 +32,7 @@
 	/* stylelint-disable-next-line @n8n/css-var-naming */
 	--color--primary--shade-1: var(--color-primary-shade-1, var(--color--primary));
 	/* stylelint-disable-next-line @n8n/css-var-naming */
-	--color--primary: var(--color-primary, var(--color--orange-300));
+	--color--primary: light-dark(#212121, #fafafa);
 	/* stylelint-disable-next-line @n8n/css-var-naming */
 	--color--primary--tint-1: var(--color-primary-tint-1, var(--color--orange-200));
 	/* stylelint-disable-next-line @n8n/css-var-naming */
