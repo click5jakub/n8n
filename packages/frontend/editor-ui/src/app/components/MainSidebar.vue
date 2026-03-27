@@ -99,10 +99,7 @@ const mainMenuItems = computed<IMenuItem[]>(() => [
 		icon: 'package-open',
 		label: i18n.baseText('generic.templates'),
 		position: 'bottom',
-		available:
-			settingsStore.isTemplatesEnabled &&
-			templatesStore.hasCustomTemplatesHost &&
-			!isResourceCenterEnabled.value,
+		available: false,
 		route: { to: { name: VIEWS.TEMPLATES } },
 	},
 	{
@@ -111,10 +108,7 @@ const mainMenuItems = computed<IMenuItem[]>(() => [
 		icon: 'package-open',
 		label: i18n.baseText('generic.templates'),
 		position: 'bottom',
-		available:
-			settingsStore.isTemplatesEnabled &&
-			!templatesStore.hasCustomTemplatesHost &&
-			!isResourceCenterEnabled.value,
+		available: false,
 		link: {
 			href: templatesStore.websiteTemplateRepositoryURL,
 			target: '_blank',
@@ -126,9 +120,7 @@ const mainMenuItems = computed<IMenuItem[]>(() => [
 		label: 'Insights',
 		position: 'bottom',
 		route: { to: { name: VIEWS.INSIGHTS } },
-		available:
-			settingsStore.isModuleActive('insights') &&
-			hasPermission(['rbac'], { rbac: { scope: 'insights:list' } }),
+		available: false,
 	},
 	{
 		id: 'help',
@@ -137,51 +129,6 @@ const mainMenuItems = computed<IMenuItem[]>(() => [
 		notification: showWhatsNewNotification.value,
 		position: 'bottom',
 		children: [
-			{
-				id: 'quickstart',
-				icon: 'video',
-				label: i18n.baseText('mainSidebar.helpMenuItems.quickstart'),
-				link: {
-					href: EXTERNAL_LINKS.QUICKSTART_VIDEO,
-					target: '_blank',
-				},
-			},
-			{
-				id: 'docs',
-				icon: 'book',
-				label: i18n.baseText('mainSidebar.helpMenuItems.documentation'),
-				link: {
-					href: EXTERNAL_LINKS.DOCUMENTATION,
-					target: '_blank',
-				},
-			},
-			{
-				id: 'forum',
-				icon: 'users',
-				label: i18n.baseText('mainSidebar.helpMenuItems.forum'),
-				link: {
-					href: EXTERNAL_LINKS.FORUM,
-					target: '_blank',
-				},
-			},
-			{
-				id: 'examples',
-				icon: 'graduation-cap',
-				label: i18n.baseText('mainSidebar.helpMenuItems.course'),
-				link: {
-					href: EXTERNAL_LINKS.COURSES,
-					target: '_blank',
-				},
-			},
-			{
-				id: 'report-bug',
-				icon: 'bug',
-				label: i18n.baseText('mainSidebar.helpMenuItems.reportBug'),
-				link: {
-					href: getReportingURL(),
-					target: '_blank',
-				},
-			},
 			{
 				id: 'about',
 				icon: 'info',

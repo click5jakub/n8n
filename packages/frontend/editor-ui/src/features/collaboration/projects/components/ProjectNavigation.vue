@@ -30,11 +30,7 @@ const usersStore = useUsersStore();
 
 const displayProjects = computed(() => globalEntityCreation.displayProjects.value);
 const isFoldersFeatureEnabled = computed(() => settingsStore.isFoldersFeatureEnabled);
-const isChatLinkAvailable = computed(
-	() =>
-		settingsStore.isChatFeatureEnabled &&
-		hasPermission(['rbac'], { rbac: { scope: 'chatHub:message' } }),
-);
+const isChatLinkAvailable = computed(() => false);
 const hasMultipleVerifiedUsers = computed(
 	() => usersStore.allUsers.filter((user) => !user.isPendingUser).length > 1,
 );

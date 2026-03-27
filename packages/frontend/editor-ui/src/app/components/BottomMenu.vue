@@ -31,7 +31,7 @@ const usersStore = useUsersStore();
 const i18n = useI18n();
 
 const whatsNewItems = computed<{ available: boolean; children: IMenuElement[] }>(() => ({
-	available: versionsStore.hasVersionUpdates || versionsStore.whatsNewArticles.length > 0,
+	available: false,
 	children: [
 		...versionsStore.whatsNewArticles.map(
 			(article) =>

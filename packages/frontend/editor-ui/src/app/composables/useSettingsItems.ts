@@ -65,7 +65,7 @@ export function useSettingsItems() {
 				icon: 'plug',
 				label: i18n.baseText('settings.n8napi'),
 				position: 'top',
-				available: settingsStore.isPublicApiEnabled && canUserAccessRouteByName(VIEWS.API_SETTINGS),
+				available: false,
 				route: { to: { name: VIEWS.API_SETTINGS } },
 			},
 			{
